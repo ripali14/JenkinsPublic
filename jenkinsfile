@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages {
+    stage('Clone repo'){
+        steps{echo 'ripali'}
+    }
+    stage('Install') {
+      steps { bat 'npm install' }
+    }
+
+  
+    stage('Static code analysis') {
+            steps { bat 'npm run-script lint' }
+        }
+
+    stage('Build') {
+      steps { bat 'npm run-script build' }
+    }
+  }
+}
