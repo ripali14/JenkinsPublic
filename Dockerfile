@@ -1,12 +1,10 @@
 # Stage 1
 FROM node:10-alpine as build-step
-RUN mkdir -p /app
-WORKDIR /app
-COPY package.json /app
+WORKDIR /usr/ripaliDirectory
+COPY ./ ./
 RUN npm install
-COPY . /app
-RUN npm run build --prod
+CMD ["npm","start"]
 
 # Stage 2
-FROM nginx:1.17.1-alpine
-COPY --from=build-step /app/docs /usr/share/nginx/html
+#FROM nginx:1.17.1-alpine
+#COPY --from=build-step /app/docs /usr/share/nginx/html
